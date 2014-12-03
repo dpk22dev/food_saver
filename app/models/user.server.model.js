@@ -88,6 +88,27 @@ var UserSchema = new Schema({
 	},
   	resetPasswordExpires: {
   		type: Date
+  	},
+  	phoneNumber:{
+  		type: String
+  	},
+  	showNumToNeedy:{
+  		type: Boolean
+  	},
+  	allowChat:{
+  		type: Boolean
+  	},
+  	alwaysDonor:{
+  		type: Boolean
+  	},
+  	alwaysOrganization:{
+  		type: Boolean
+  	},
+  	minQuatityFood:{
+  		type: String
+  	},
+  	minLifeSpan:{
+  		type: String
   	}
 });
 

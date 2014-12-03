@@ -1,0 +1,25 @@
+<section data-ng-controller="OrganizationController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Organization</h1>
+    </div>
+
+    <div class="list-group" ng-show="authentication">
+        <div class="form-group">
+            <label for="inputEmail3" data-ng-model="content" id="content" class="col-sm-2 control-label">Min quantity of food</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" for="mqf" data-ng-model="user.minQuatityFood" id="minQuatityFood" placeholder="Min quantity of food">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Having min life span</label>
+            <div class="col-sm-10">
+                <input type="text" for="mls" data-ng-model="user.minLifeSpan" id="minLifeSpan" class="form-control" placeholder="Having min life span">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button ng-click='create()' class="btn btn-default">Update</button>
+            </div>
+        </div>
+    </div>
+</section>
