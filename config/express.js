@@ -17,7 +17,7 @@ var express = require('express'),
 	}),
 	flash = require('connect-flash'),
 	config = require('./config'),
-	consolidate = require('consolidate'),
+	consolidate = require('consolidate'),	
 	path = require('path');
 
 module.exports = function(db) {
@@ -66,12 +66,11 @@ module.exports = function(db) {
 	// Environment dependent middleware
 	if (process.env.NODE_ENV === 'development') {
 		// Enable logger (morgan)
-		app.use(morgan('dev'));
-
+		app.use(morgan('dev'));		
 		// Disable views cache
 		app.set('view cache', false);
 	} else if (process.env.NODE_ENV === 'production') {
-		app.locals.cache = 'memory';
+		app.locals.cache = 'memory';		
 	}
 
 	// Request body parsing middleware should be above methodOverride
@@ -141,7 +140,7 @@ module.exports = function(db) {
 			url: req.originalUrl,
 			error: 'Not Found'
 		});
-	});
-
+	});	
+	
 	return app;
 };

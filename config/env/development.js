@@ -4,6 +4,7 @@
 
 module.exports = {
 	db: 'mongodb://localhost/mean-dev',
+	kue_port: 3001,
 	app: {
 		title: 'MEAN.JS - Development Environment'
 	},

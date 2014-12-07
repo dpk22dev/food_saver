@@ -11,8 +11,10 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	assign = require('./assign.server.controller'),
-	Donation = mongoose.model('Donation'),
+	Donation = mongoose.model('Donation'),	
 	_ = require('lodash');
+
+var testMail = require('../jobs/kue.server');
 
 /**
  * Create a donation entry
@@ -28,7 +30,7 @@ exports.create = function(req, res) {
 			});
 		} else {
 			// create document in assign collection
-			assign.create_donation( req.user.id, donation.id );
+			assign.create_donation( req.user.id, donation.id );			
 			res.json(donation);
 		}
 	}); 
@@ -72,6 +74,7 @@ exports.delete = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			testMail.newEmail( 'title', 'to', 'template' );
 			res.json(donation);
 		}
 	});
