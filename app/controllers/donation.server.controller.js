@@ -14,6 +14,8 @@ var mongoose = require('mongoose'),
 	Donation = mongoose.model('Donation'),	
 	_ = require('lodash');
 
+var fs = require('fs');
+
 var testMail = require('../jobs/kue.server');
 
 /**
@@ -74,10 +76,21 @@ exports.delete = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			testMail.newEmail( 'title', 'to', 'template' );
-			res.json(donation);
+			testMail.newEmail( 'title', 'to', 'template', req, res, donation );
+			//res.json(donation);
+// gives error: can't write non string to file
+var wstream = fs.createWriteStream('/tmp/test');
+wstream.write( 'original req' ); 	
+wstream.write( req ); 	
+wstream.write( 'original res:' ); 	
+wstream.write( res ); 	
+wstream.write( 'original donation' ); 	
+wstream.write( donation ); 	
+wstream.end();
+
 		}
 	});
+
 };
 
 /**
